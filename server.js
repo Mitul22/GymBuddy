@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth'); 
+const detailsRoutes = require('./routes/details');
 
 
+
+
+const SECRET_KEY = require('crypto').randomBytes(64).toString('hex');  
 const MONGODB_URI = 'mongodb+srv://admin:admin@cluster0.btwcixe.mongodb.net/?retryWrites=true&w=majority';
 const app = express();
 
@@ -21,14 +26,20 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// Use auth routes
+app.use('/auth', authRoutes);
+app.use('/details', detailsRoutes);
 // TODO: Define routes and models here
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Welcome to GymBuddy API!');
-});
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
