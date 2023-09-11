@@ -1,3 +1,5 @@
+//just sample
+
 function recommendFitnessPlan(details) {
     if (details.goals === 'Lose Weight') {
         return {
@@ -9,7 +11,7 @@ function recommendFitnessPlan(details) {
             workout: 'Heavy weight lifting with rest days',
             diet: 'High protein and balanced carbs'
         };
-    } else {  // Build Muscle
+    } else {  
         return {
             workout: 'Strength training with muscle group splits',
             diet: 'High protein and calorie surplus'

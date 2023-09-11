@@ -11,11 +11,6 @@ const detailsSchema = new mongoose.Schema({
         required: true,
         enum: ['18-39', '40-60', '60+']
     },
-    gender: {
-        type: String,
-        required: true,
-        enum: ['Male', 'Female', 'Other']
-    },
     goals: {
         type: String,
         required: true,

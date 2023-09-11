@@ -21,6 +21,9 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
     });
 
   
+//Public
+app.use(express.static('public'));
+
 // Middleware
 
 app.use(bodyParser.json());

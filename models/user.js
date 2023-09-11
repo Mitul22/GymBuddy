@@ -1,3 +1,4 @@
+//  model to store user details like age bracket and fitness goals:
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 

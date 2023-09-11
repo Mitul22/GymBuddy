@@ -1,3 +1,4 @@
+//route to save user details and another to fetch the fitness plan
 const express = require('express');
 const Details = require('../models/details');
 const auth = require('../middleware/auth');
