@@ -10,7 +10,8 @@ const detailsRoutes = require('./routes/details');
 const SECRET_KEY = require('crypto').randomBytes(64).toString('hex');  
 const MONGODB_URI = 'mongodb+srv://admin:admin@cluster0.btwcixe.mongodb.net/?retryWrites=true&w=majority';
 const app = express();
-
+//Public
+app.use(express.static('public'));
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -21,8 +22,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
     });
 
   
-//Public
-app.use(express.static('public'));
+
 
 // Middleware
 
@@ -40,8 +40,15 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something went wrong!');
 });
 
-const PORT = 3000;
 
+const PORT = 3000;
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/login.html');
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/register.html');
+});
 
 
 app.listen(PORT, () => {
